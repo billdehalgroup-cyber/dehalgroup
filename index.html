@@ -3,29 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Website</title>
+    <title>Dehal Group of Companies | Excellence in Real Estate, Healthcare & Hospitality</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --primary: #1a2a44;
+            --accent: #c5a059;
+        }
+
         body {
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
-        .container {
-            text-align: center;
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
         }
+
+        .hero-overlay {
+            background: linear-gradient(rgba(26, 42, 68, 0.8), rgba(26, 42, 68, 0.6));
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .bg-primary { background-color: var(--primary); }
+        .text-accent { color: var(--accent); }
+        .border-accent { border-color: var(--accent); }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Hello, World!</h1>
-        <p>My website is officially running on GitHub Pages.</p>
-    </div>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-serif font-bold tracking-wider text-primary">DEHAL<span class="text-accent">GROUP</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 font-semibold text-sm uppercase tracking-widest text-primary">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                    <a href="#construction" class="nav-link">Construction</a>
+                    <a href="#healthcare" class="nav-link">Healthcare</a>
+                    <a href="#philanthropy" class="nav-link">Philanthropy</a>
+                    <a href="#contact" class="nav-link px-4 py-2 border border-accent rounded text-accent hover:bg-accent hover:text-white transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-primary"><i class="fas fa-bars text-2xl"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" alt="Modern Architecture" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl">
+            <h1 class="text-4xl md:text-7xl font-serif text-white mb-6">Vertical Integration. <br><span class="text-accent">Visionary Leadership.</span></h1>
+            <p class="text-xl text-gray-200 mb-8 leading-relaxed">Diversified investments in healthcare, hospitality, and construction across Canada. Driven by educated risk and a passion for excellence.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#portfolio" class="bg-accent text-white px-8 py-4 rounded font-bold uppercase tracking-widest hover:bg-opacity-90 transition">Explore Portfolio</a>
+                <a href="#contact" class="border border-white text-white px-8 py-4 rounded font-bold uppercase tracking-widest hover:bg-white hover:text-primary transition">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-accent uppercase tracking-widest font-bold mb-4">Under Bill Dehal's Leadership</h2>
+                    <h3 class="text-4xl font-serif text-primary mb-6">Built on Strength, Sustained by Excellence</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Under the family’s leadership, Dehal Group has continued to strive for growth and development opportunities focusing on complete vertical integration. Our core advantage lies in controlling all aspects of the asset lifecycle—from initial design and construction to long-term management and service excellence.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 mt-10">
+                        <div>
+                            <span class="block text-4xl font-bold text-primary">256+</span>
+                            <span class="text-sm text-gray-500 uppercase tracking-tighter">Total Employees</span>
+                        </div>
+                        <div>
+                            <span class="block text-4xl font-bold text-primary">5</span>
+                            <span class="text-sm text-gray-500 uppercase tracking-tighter">Asset Classes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1570126618983-dd752348e221?auto=format&fit=crop&q=80&w=1000" alt="High-rise construction" class="rounded shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 bg-primary p-8 text-white hidden lg:block max-w-xs">
+                        <p class="italic">"Our strength is our people. Every business decision is made with educated risk and maximum benefit for our entire team."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Asset Classes / Portfolio -->
+    <section id="portfolio" class="py-24 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif text-primary mb-4">Diverse Portfolio Management</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Geographic diversification is critical to our income stability and growth, reducing vulnerability to economic fluctuations.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Hospitality -->
+                <div class="bg-white rounded overflow-hidden shadow-lg card-hover">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-xl font-bold text-primary mb-2">Hospitality</h4>
+                        <p class="text-gray-600 text-sm mb-4">Flagship brands including Hilton, Homewood Suites, and Garden Inn across Canada.</p>
+                    </div>
+                </div>
+                <!-- Commercial -->
+                <div class="bg-white rounded overflow-hidden shadow-lg card-hover">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-xl font-bold text-primary mb-2">Retail & Office</h4>
+                        <p class="text-gray-600 text-sm mb-4">Significant investments in prime locations for retail, industrial, and office asset classes.</p>
+                    </div>
+                </div>
+                <!-- Residential -->
+                <div class="bg-white rounded overflow-hidden shadow-lg card-hover">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-xl font-bold text-primary mb-2">Multi-Suite Residential</h4>
+                        <p class="text-gray-600 text-sm mb-4">High-quality high-rise developments providing luxury and affordable housing solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Healthcare Section -->
+    <section id="healthcare" class="py-24 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1000" class="rounded shadow-xl" alt="Medical Center">
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-accent uppercase tracking-widest font-bold mb-4">Healthcare Excellence</h2>
+                    <h3 class="text-4xl font-serif mb-6">State-of-the-Art Medical Facilities</h3>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        DEHALGROUP operates two premier medical centres, providing world-class care with 11 full-time doctors and a dedicated team of receptionists and technicians. Our vertical integration strategy ensures that our medical facilities are built to the highest standards of modern healthcare design.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-accent"></i>
+                            <span>11 Full-time Medical Practitioners</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-accent"></i>
+                            <span>Advanced Diagnostic Equipment</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-accent"></i>
+                            <span>Full-spectrum Technical Support</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Construction Partners -->
+    <section id="construction" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-serif text-primary mb-2">Strategic Partnerships in Construction</h3>
+                <p class="text-gray-500">Collaborating with industry leaders to deliver excellence</p>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-12 opacity-60">
+                <span class="text-3xl font-bold text-gray-400">PCL</span>
+                <span class="text-3xl font-bold text-gray-400">AECON</span>
+                <span class="text-3xl font-bold text-gray-400">ELLIS DON</span>
+                <span class="text-3xl font-bold text-gray-400">Gov. Partners</span>
+            </div>
+            <div class="mt-16 bg-gray-50 p-10 rounded-xl border-l-4 border-accent">
+                <h4 class="text-xl font-bold text-primary mb-4">Project Management Expertise</h4>
+                <p class="text-gray-600">Our success in controlling all aspects of construction is backed by project and construction management professionals with years of experience. We work alongside all levels of government—federal, provincial, and municipal—to construct affordable housing and infrastructure that serves the community's demand.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philanthropy Section -->
+    <section id="philanthropy" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-accent uppercase tracking-widest font-bold mb-4">Giving Back</h2>
+                <h3 class="text-4xl font-serif text-primary">Community & Philanthropy</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="text-accent text-3xl mb-4"><i class="fas fa-hands-helping"></i></div>
+                    <h4 class="text-xl font-bold mb-4">Community Investment</h4>
+                    <p class="text-gray-600">Bill Dehal has long been a champion for local community initiatives. Through the Dehal Group, we invest not just capital, but time and resources into local volunteer work and community development projects that create lasting positive impact.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="text-accent text-3xl mb-4"><i class="fas fa-home"></i></div>
+                    <h4 class="text-xl font-bold mb-4">Affordable Housing Initiatives</h4>
+                    <p class="text-gray-600">Beyond commercial success, we partner with municipalities to solve the housing crisis. By applying our construction efficiency to affordable housing projects, we provide dignity and quality builds to those who need it most.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-primary rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                <div class="md:w-1/2 p-12 text-white">
+                    <h3 class="text-3xl font-serif mb-6">Contact Our Headquarters</h3>
+                    <p class="text-gray-300 mb-8">Reach out to discuss partnership opportunities, investments, or development projects.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-map-marker-alt text-accent mt-1"></i>
+                            <div>
+                                <p class="font-bold">Address</p>
+                                <p class="text-gray-400">2275 Upper Middle Rd E #700<br>Oakville, ON L6H 0C3</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-phone text-accent mt-1"></i>
+                            <div>
+                                <p class="font-bold">Phone</p>
+                                <p class="text-gray-400">647 966-4802</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 p-12 bg-gray-50">
+                    <form onsubmit="event.preventDefault(); document.getElementById('success-msg').classList.remove('hidden');" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" placeholder="Name" class="w-full p-4 rounded border border-gray-200 focus:border-accent outline-none">
+                            <input type="email" placeholder="Email" class="w-full p-4 rounded border border-gray-200 focus:border-accent outline-none">
+                        </div>
+                        <input type="text" placeholder="Subject" class="w-full p-4 rounded border border-gray-200 focus:border-accent outline-none">
+                        <textarea placeholder="Message" rows="4" class="w-full p-4 rounded border border-gray-200 focus:border-accent outline-none"></textarea>
+                        <button class="w-full bg-primary text-white p-4 rounded font-bold uppercase tracking-widest hover:bg-opacity-90 transition">Send Message</button>
+                        <div id="success-msg" class="hidden text-green-600 font-bold text-center pt-4">Thank you for your message. We will be in touch shortly.</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-serif font-bold tracking-wider mb-4">DEHAL<span class="text-accent">GROUP</span></h2>
+            <p class="text-gray-400 text-sm mb-8">© 2024 Dehal Group of Companies. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
