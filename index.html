@@ -9,42 +9,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
-        
+       
         :root {
-            --charcoal: #1a202c; 
-            --gold-accent: #c5a059; 
+            --charcoal: #1a202c;
+            --gold-accent: #c5a059;
             --warm-white: #f8f9fa;
         }
-
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--warm-white);
             color: var(--charcoal);
             scroll-behavior: smooth;
         }
-
         .font-serif { font-family: 'Playfair Display', serif; }
         .text-gold { color: var(--gold-accent); }
         .bg-gold { background-color: var(--gold-accent); }
         .bg-charcoal { background-color: var(--charcoal); }
-
         /* SPA View Logic */
         .page-view {
             display: none;
             animation: fadeIn 0.4s ease-in-out;
         }
         .page-view.active { display: block; }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         /* Carousel */
         .carousel-track { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         .carousel-slide { min-width: 100%; height: 85vh; position: relative; }
         .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
-        
+       
         .carousel-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
             background: rgba(26, 32, 44, 0.6); color: white;
@@ -52,31 +47,48 @@
             cursor: pointer; z-index: 10; transition: all 0.3s;
         }
         .carousel-btn:hover { background: var(--gold-accent); }
-
         .nav-link.active { color: var(--gold-accent); font-weight: 600; border-bottom: 2px solid var(--gold-accent); }
-        
+       
         /* Blueprint Background Pattern */
         .blueprint-bg {
             background-color: #f1f5f9;
             background-image: radial-gradient(#cbd5e1 1px, transparent 0);
             background-size: 20px 20px;
         }
-
         .stat-card {
             border-left: 1px solid #e2e8f0;
             padding-left: 1.5rem;
         }
+        /* Diagonal placeholder for Bill Dehal */
+        .dehal-placeholder {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e2e8f0 100%);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+        .dehal-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 15px,
+                #c5a05922 15px,
+                #c5a05922 30px
+            );
+            opacity: 0.6;
+        }
     </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
-
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6 flex justify-between h-20 items-center">
             <div class="cursor-pointer" onclick="navigateTo('home')">
                 <span class="text-xl font-serif font-bold tracking-tighter uppercase">DEHAL<span class="text-gold font-normal">GROUP</span></span>
             </div>
-            
+           
             <div class="hidden lg:flex space-x-6 items-center text-[10px] uppercase tracking-[0.2em] font-medium text-gray-500">
                 <button onclick="navigateTo('home')" class="nav-link px-1 py-1" id="nav-home">Home</button>
                 <button onclick="navigateTo('about')" class="nav-link px-1 py-1" id="nav-about">Leadership</button>
@@ -89,10 +101,9 @@
                 <button onclick="navigateTo('investors')" class="nav-link px-1 py-1" id="nav-investors">Partners</button>
                 <button onclick="navigateTo('contact')" class="bg-charcoal text-white px-5 py-2 hover:bg-gold transition ml-4">Inquire</button>
             </div>
-
             <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-900"><i class="fas fa-bars"></i></button>
         </div>
-        
+       
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t p-6 flex flex-col space-y-4 text-xs uppercase tracking-widest font-bold">
             <button onclick="navigateTo('home')">Home</button>
@@ -101,14 +112,12 @@
             <button onclick="navigateTo('construction')">Construction</button>
             <button onclick="navigateTo('healthcare')">Healthcare</button>
             <button onclick="navigateTo('hospitality')">Hospitality</button>
-            <button onclick="navigateTo('media')">Media & Social</button>
+            <button onclick="navigateTo('media')">Media</button>
             <button onclick="navigateTo('impact')">Impact</button>
             <button onclick="navigateTo('investors')">Partners</button>
         </div>
     </nav>
-
     <main class="flex-grow pt-20">
-
         <!-- 1. VIEW: HOME -->
         <div id="view-home" class="page-view active">
             <section class="relative h-[85vh] overflow-hidden">
@@ -145,7 +154,6 @@
                 <button class="carousel-btn left-10" onclick="moveCarousel('home', -1)"><i class="fas fa-arrow-left"></i></button>
                 <button class="carousel-btn right-10" onclick="moveCarousel('home', 1)"><i class="fas fa-arrow-right"></i></button>
             </section>
-
             <!-- Quick Intro Row -->
             <section class="bg-charcoal text-white py-12">
                 <div class="max-w-7xl mx-auto px-6 text-center italic opacity-80 tracking-[0.2em] uppercase text-[10px]">
@@ -153,14 +161,23 @@
                 </div>
             </section>
         </div>
-
         <!-- 2. VIEW: LEADERSHIP (Bill Dehal) -->
         <div id="view-about" class="page-view">
             <section class="py-24 bg-white">
                 <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
                     <div class="relative">
                         <div class="absolute -top-4 -left-4 w-24 h-24 bg-gold/10 -z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800" class="w-full grayscale shadow-2xl rounded-sm">
+                        <!-- REPLACED with branded diagonal-lines placeholder (not the wrong Unsplash photo) -->
+                        <div class="dehal-placeholder w-full aspect-[4/3] md:aspect-[5/4] rounded-sm flex items-center justify-center border border-gray-100">
+                            <div class="relative z-10 text-center">
+                                <div class="inline-flex flex-col items-center">
+                                    <span class="font-serif text-6xl md:text-7xl font-bold tracking-tighter text-charcoal">DEHAL</span>
+                                    <span class="font-serif text-6xl md:text-7xl font-bold tracking-tighter text-gold -mt-3">GROUP</span>
+                                </div>
+                                <p class="mt-6 text-xs uppercase tracking-[0.15em] font-medium text-gray-500">Leadership Portrait</p>
+                                <p class="text-[10px] text-gray-400">Bill Dehal • Principal & Founder</p>
+                            </div>
+                        </div>
                         <div class="mt-8">
                             <h2 class="text-3xl font-serif mb-2">Bill Dehal</h2>
                             <p class="text-gold uppercase tracking-widest text-xs font-bold">Principal & Founder</p>
@@ -168,8 +185,8 @@
                     </div>
                     <div>
                         <h3 class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold mb-6">Visionary Leadership</h3>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-lg">Under the family’s leadership, the Dehal Group of Companies has continued to strive for growth and development opportunities focusing on <strong>complete vertical integration</strong>. </p>
-                        <p class="text-gray-600 leading-relaxed mb-8">Each business decision is made with educated risk and maximum benefit for the entire team. Bill Dehal’s philosophy centers on the idea that our strength is our people, valuing the contribution of every one of our 256 employees on payroll.</p>
+                        <p class="text-gray-600 leading-relaxed mb-6 text-lg">Under the family’s leadership, the Dehal Group of Companies continues to strive for growth and development opportunities focusing on <strong>complete vertical integration</strong>. </p>
+                        <p class="text-gray-600 leading-relaxed mb-8">Each business decision is made with calculated risks for maximum benefit for the entire team. Bill Dehal’s philosophy centers on the idea that our strength is our people, valuing the contribution of every one of our 256 employees on payroll.</p>
                         <div class="border-l-4 border-gold pl-8 py-2 mb-10">
                             <p class="text-charcoal italic text-xl font-serif">"Our hotels, our clinics, and our construction sites all share one common DNA: The Dehal Standard of Excellence."</p>
                         </div>
@@ -178,8 +195,7 @@
                 </div>
             </section>
         </div>
-
-        <!-- NEW VIEW: MEDIA & RECOGNITION -->
+        <!-- 3. VIEW: MEDIA & RECOGNITION (unchanged) -->
         <div id="view-media" class="page-view">
             <section class="py-24 bg-gray-50">
                 <div class="max-w-6xl mx-auto px-6">
@@ -188,7 +204,6 @@
                         <h3 class="text-4xl font-serif mb-6">Media & Recognition</h3>
                         <p class="text-gray-600 max-w-2xl mx-auto">Bill Dehal's commitment to community and excellence has been recognized across various platforms. Explore our latest features, community milestones, and digital channels.</p>
                     </div>
-
                     <!-- Press / News Section -->
                     <div class="mb-20">
                         <h4 class="text-charcoal text-xl font-serif mb-8 border-b border-gray-200 pb-4">In The Press</h4>
@@ -207,13 +222,12 @@
                             </a>
                         </div>
                     </div>
-
-                    <!-- Community Milestones (Gallery Links) -->
+                    <!-- Community Milestones -->
                     <div class="mb-20">
                         <h4 class="text-charcoal text-xl font-serif mb-8 border-b border-gray-200 pb-4">Community Milestones</h4>
                         <div class="grid md:grid-cols-3 gap-6">
                             <a href="https://imgur.com/gallery/bill-dehal-special-olympics-torch-run-hqE8QWU" target="_blank" class="group relative h-64 overflow-hidden rounded-sm cursor-pointer">
-                                <img src="https://images.unsplash.com/photo-1552674605-469455954e60?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                                <img src="https://images.unsplash.com/photo-1552674605-469455954e60?auto=format&fit=crop&q=80&w=600" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" alt="Special Olympics Torch Run">
                                 <div class="absolute inset-0 bg-black/60 flex items-center justify-center p-6 text-center">
                                     <div>
                                         <h5 class="text-white font-bold mb-1">Special Olympics Torch Run</h5>
@@ -222,7 +236,7 @@
                                 </div>
                             </a>
                             <a href="https://in.pinterest.com/pin/bill-with-the-organizers-of-the-student-chapter--360921357612943110/" target="_blank" class="group relative h-64 overflow-hidden rounded-sm cursor-pointer">
-                                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" alt="Student Chapter Leadership">
                                 <div class="absolute inset-0 bg-black/60 flex items-center justify-center p-6 text-center">
                                     <div>
                                         <h5 class="text-white font-bold mb-1">Student Chapter Leadership</h5>
@@ -231,7 +245,7 @@
                                 </div>
                             </a>
                             <a href="https://commons.wikimedia.org/wiki/File:Bill_Dehal.jpg" target="_blank" class="group relative h-64 overflow-hidden rounded-sm cursor-pointer">
-                                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=600" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" alt="Public Records">
                                 <div class="absolute inset-0 bg-black/60 flex items-center justify-center p-6 text-center">
                                     <div>
                                         <h5 class="text-white font-bold mb-1">Public Records</h5>
@@ -241,7 +255,6 @@
                             </a>
                         </div>
                     </div>
-
                     <!-- Social Connect Grid -->
                     <div>
                         <h4 class="text-charcoal text-xl font-serif mb-8 border-b border-gray-200 pb-4">Connect Online</h4>
@@ -280,12 +293,10 @@
                             </a>
                         </div>
                     </div>
-
                 </div>
             </section>
         </div>
-
-        <!-- 3. VIEW: REAL ESTATE -->
+        <!-- 4. VIEW: REAL ESTATE (unchanged except lazy loading) -->
         <div id="view-realestate" class="page-view">
             <section class="py-20 bg-gray-50">
                 <div class="max-w-7xl mx-auto px-6">
@@ -294,38 +305,39 @@
                         <h3 class="text-5xl font-serif mb-6">Strategic Diversification</h3>
                         <p class="text-gray-600 text-lg">Geographic diversification is critical to our income stability and growth, reducing vulnerability to economic fluctuations. We maintain significant investments and management capabilities across five core asset classes.</p>
                     </div>
-                    
+                   
                     <div class="grid md:grid-cols-5 gap-4">
                         <div class="group relative h-[450px] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1555529733-0e670560f7e1?auto=format&fit=crop&w=600" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                            <img src="https://images.unsplash.com/photo-1555529733-0e670560f7e1?auto=format&fit=crop&w=600" loading="lazy" class="h-full w-full object-cover transition duration-700 group-hover:scale-110" alt="Retail">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
                                 <h4 class="text-white font-bold tracking-widest uppercase text-sm">Retail</h4>
                                 <p class="text-white/60 text-xs mt-2">Plazas & Shopping Centres</p>
                             </div>
                         </div>
+                        <!-- (the other 4 cards are exactly the same as your original, just with loading="lazy" and alt text) -->
                         <div class="group relative h-[450px] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600" loading="lazy" class="h-full w-full object-cover transition duration-700 group-hover:scale-110" alt="Office">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
                                 <h4 class="text-white font-bold tracking-widest uppercase text-sm">Office</h4>
                                 <p class="text-white/60 text-xs mt-2">Corporate Headquarters</p>
                             </div>
                         </div>
                         <div class="group relative h-[450px] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=600" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                            <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=600" loading="lazy" class="h-full w-full object-cover transition duration-700 group-hover:scale-110" alt="Industrial">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
                                 <h4 class="text-white font-bold tracking-widest uppercase text-sm">Industrial</h4>
                                 <p class="text-white/60 text-xs mt-2">Logistics & Warehousing</p>
                             </div>
                         </div>
                         <div class="group relative h-[450px] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600" loading="lazy" class="h-full w-full object-cover transition duration-700 group-hover:scale-110" alt="Residential">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
                                 <h4 class="text-white font-bold tracking-widest uppercase text-sm">Residential</h4>
                                 <p class="text-white/60 text-xs mt-2">Multi-Suite Living</p>
                             </div>
                         </div>
                         <div class="group relative h-[450px] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600" loading="lazy" class="h-full w-full object-cover transition duration-700 group-hover:scale-110" alt="Hotel">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
                                 <h4 class="text-white font-bold tracking-widest uppercase text-sm">Hotel</h4>
                                 <p class="text-white/60 text-xs mt-2">Hospitality Flagships</p>
@@ -335,8 +347,7 @@
                 </div>
             </section>
         </div>
-
-        <!-- 4. VIEW: CONSTRUCTION -->
+        <!-- 5. VIEW: CONSTRUCTION (DEHALGroup → Dehal Group) -->
         <div id="view-construction" class="page-view blueprint-bg">
             <section class="py-24">
                 <div class="max-w-7xl mx-auto px-6">
@@ -345,9 +356,9 @@
                             <div>
                                 <h2 class="text-gold uppercase tracking-widest text-xs font-bold mb-4">Development & Design</h2>
                                 <h3 class="text-5xl font-serif mb-6">Vertical Integration in Construction</h3>
-                                <p class="text-gray-600 leading-relaxed text-lg">Due to DEHALGroup’s success in controlling all aspects of construction, we employ experienced project and construction management professionals who bring years of expertise to both delivery and design development processes.</p>
+                                <p class="text-gray-600 leading-relaxed text-lg">Due to Dehal Group’s success in controlling all aspects of construction, we employ experienced project and construction management professionals who bring years of expertise to both delivery and design development processes.</p>
                             </div>
-                            
+                           
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div class="stat-card">
                                     <h4 class="font-bold text-charcoal mb-2">High-Rise Expertise</h4>
@@ -358,7 +369,6 @@
                                     <p class="text-sm text-gray-500 leading-relaxed">Specialized construction for high-quality medical and clinical facilities with complex technical requirements.</p>
                                 </div>
                             </div>
-
                             <div class="bg-white p-8 border border-gray-200 shadow-sm">
                                 <h4 class="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-6">Industry Collaborations</h4>
                                 <div class="flex flex-wrap gap-8 items-center opacity-60 grayscale">
@@ -381,24 +391,23 @@
                                     </div>
                                     <div class="text-[8px] uppercase tracking-widest text-right">PROPERTY OF DEHAL GROUP. DO NOT DUPLICATE.</div>
                                 </div>
-                                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40">
+                                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200" loading="lazy" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40" alt="Construction blueprint">
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-
-        <!-- 5. VIEW: HEALTHCARE -->
+        <!-- 6. VIEW: HEALTHCARE (unchanged except lazy) -->
         <div id="view-healthcare" class="page-view">
             <section class="py-24 bg-white">
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="grid md:grid-cols-2 gap-16 items-center">
                         <div class="h-[700px] grid grid-cols-2 gap-4">
-                            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover rounded-sm">
+                            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800" loading="lazy" class="w-full h-full object-cover rounded-sm" alt="Medical facility">
                             <div class="grid grid-rows-2 gap-4 h-full">
-                                <img src="https://images.unsplash.com/photo-1538108197017-c1b99a07c7f0?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover rounded-sm">
-                                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover rounded-sm">
+                                <img src="https://images.unsplash.com/photo-1538108197017-c1b99a07c7f0?auto=format&fit=crop&q=80&w=800" loading="lazy" class="w-full h-full object-cover rounded-sm" alt="Clinic interior">
+                                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800" loading="lazy" class="w-full h-full object-cover rounded-sm" alt="Healthcare staff">
                             </div>
                         </div>
                         <div>
@@ -406,7 +415,7 @@
                             <h3 class="text-5xl font-serif mb-8 text-charcoal">Medical Facilities</h3>
                             <p class="text-gray-600 mb-8 text-lg leading-relaxed">Dehal Group operates 2 state-of-the-art medical centres with <strong>11 full-time physicians</strong> on staff, supported by a dedicated team of receptionists and technicians.</p>
                             <p class="text-gray-500 mb-10">Our focus on healthcare integration ensures that clinical excellence meets high-end facility management, providing a patient-focused environment that is both professional and clinical.</p>
-                            
+                           
                             <div class="grid grid-cols-2 gap-6 border-t border-gray-100 pt-10">
                                 <div>
                                     <h4 class="font-bold text-sm mb-2">Physician Staffing</h4>
@@ -422,8 +431,7 @@
                 </div>
             </section>
         </div>
-
-        <!-- 6. VIEW: HOSPITALITY -->
+        <!-- 7. VIEW: HOSPITALITY (unchanged) -->
         <div id="view-hospitality" class="page-view bg-charcoal text-white">
             <section class="py-24">
                 <div class="max-w-7xl mx-auto px-6">
@@ -433,17 +441,17 @@
                     </div>
                     <div class="grid md:grid-cols-3 gap-12">
                         <div class="space-y-6">
-                            <div class="h-80 overflow-hidden"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800" class="w-full h-full object-cover"></div>
+                            <div class="h-80 overflow-hidden"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800" loading="lazy" class="w-full h-full object-cover" alt="Hilton Garden Inn"></div>
                             <h4 class="text-2xl font-serif">Hilton Garden Inn</h4>
                             <p class="text-gray-400 text-sm leading-relaxed">Premium quality and superb service in the highly-competitive hotel industry, catering to the business traveller.</p>
                         </div>
                         <div class="space-y-6">
-                            <div class="h-80 overflow-hidden"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800" class="w-full h-full object-cover"></div>
+                            <div class="h-80 overflow-hidden"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800" loading="lazy" class="w-full h-full object-cover" alt="Homewood Suites"></div>
                             <h4 class="text-2xl font-serif">Homewood Suites</h4>
                             <p class="text-gray-400 text-sm leading-relaxed">Extended stay flagships that offer the comforts of home with the precision of Dehal management.</p>
                         </div>
                         <div class="space-y-6">
-                            <div class="h-80 overflow-hidden"><img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=800" class="w-full h-full object-cover"></div>
+                            <div class="h-80 overflow-hidden"><img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=800" loading="lazy" class="w-full h-full object-cover" alt="Strategic Locations"></div>
                             <h4 class="text-2xl font-serif">Strategic Locations</h4>
                             <p class="text-gray-400 text-sm leading-relaxed">Prime locations selected to reduce vulnerability to economic fluctuations and maximize guest benefits.</p>
                         </div>
@@ -451,8 +459,7 @@
                 </div>
             </section>
         </div>
-
-        <!-- 7. VIEW: PHILANTHROPY -->
+        <!-- 8. VIEW: PHILANTHROPY (unchanged) -->
         <div id="view-impact" class="page-view">
             <section class="py-24 bg-white">
                 <div class="max-w-5xl mx-auto px-6">
@@ -461,7 +468,6 @@
                         <h3 class="text-4xl font-serif mb-6">Building More Than Properties</h3>
                         <p class="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">Bill Dehal is deeply committed to giving back to the community. Beyond real estate, he leverages the Dehal Group's resources to create positive social impact through volunteer work and strategic public partnerships.</p>
                     </div>
-
                     <div class="grid md:grid-cols-2 gap-12 mb-16">
                         <div class="bg-gray-50 p-10 border border-gray-100">
                             <div class="text-gold text-3xl mb-4"><i class="fas fa-hand-holding-heart"></i></div>
@@ -474,9 +480,8 @@
                             <p class="text-gray-500 text-sm leading-relaxed">Under Bill Dehal’s direction, the group supports local charities and medical initiatives, ensuring that success is shared with the regions we serve.</p>
                         </div>
                     </div>
-                    <!-- Added meaningful image for Philanthropy -->
                     <div class="w-full h-96 overflow-hidden rounded-sm relative">
-                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1200" loading="lazy" class="w-full h-full object-cover" alt="Philanthropy">
                         <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
                             <h3 class="text-white font-serif text-3xl italic">"Investing in our shared future."</h3>
                         </div>
@@ -484,8 +489,7 @@
                 </div>
             </section>
         </div>
-
-        <!-- 8. VIEW: PARTNERS -->
+        <!-- 9. VIEW: PARTNERS (unchanged) -->
         <div id="view-investors" class="page-view">
             <section class="py-24 bg-gray-50">
                 <div class="max-w-4xl mx-auto px-6 text-center">
@@ -505,8 +509,7 @@
                 </div>
             </section>
         </div>
-
-        <!-- 9. VIEW: CONTACT -->
+        <!-- 10. VIEW: CONTACT (unchanged) -->
         <div id="view-contact" class="page-view">
             <section class="py-24 bg-white">
                 <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20">
@@ -543,9 +546,7 @@
                 </div>
             </section>
         </div>
-
     </main>
-
     <footer class="bg-charcoal text-white py-16 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-12">
             <div class="col-span-1 md:col-span-2">
@@ -576,7 +577,6 @@
             <span>&copy; 2026 Dehal Group of Companies. All Rights Reserved.</span>
         </div>
     </footer>
-
     <script>
         function navigateTo(id) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
@@ -588,20 +588,16 @@
             document.getElementById('mobile-menu').classList.add('hidden');
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
-
         function toggleMobileMenu() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
-
         const carouselStates = { 'home': { index: 0, count: 3 } };
-
         function moveCarousel(id, dir) {
             const state = carouselStates[id];
             state.index = (state.index + dir + state.count) % state.count;
             const track = document.getElementById('track-' + id);
             track.style.transform = `translateX(-${state.index * 100}%)`;
         }
-
         setInterval(() => moveCarousel('home', 1), 7000);
     </script>
 </body>
